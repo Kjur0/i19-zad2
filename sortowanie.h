@@ -5,8 +5,6 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 void swap(int& a, int& b) {
 	int temp = a;
 	a = b;
@@ -16,11 +14,8 @@ void swap(int& a, int& b) {
 int bubbleSort(int* array, int arraySize) {
 	int swaps = 0;
 
-	int maxElement;
-	int index;
-
-	for ( maxElement = arraySize; maxElement > 0; maxElement-- ) {
-		for ( index = 0; index < maxElement - 1; index++ ) {
+	for ( int maxElement = arraySize; maxElement > 0; maxElement-- ) {
+		for ( int index = 0; index < maxElement - 1; index++ ) {
 			if ( array[index] > array[index + 1] ) {
 				swap(array[index], array[index + 1]);
 				swaps++;
@@ -34,16 +29,11 @@ int bubbleSort(int* array, int arraySize) {
 int selectionSort(int* array, int arraySize) {
 	int swaps = 0;
 
-	int startScan;
-	int minIndex;
-	int minValue;
-	int index;
+	for ( int startScan = 0; startScan < arraySize - 1; startScan++ ) {
+		int minIndex = startScan;
+		int minValue = array[startScan];
 
-	for ( startScan = 0; startScan < arraySize - 1; startScan++ ) {
-		minIndex = startScan;
-		minValue = array[startScan];
-
-		for ( index = startScan + 1; index < arraySize; index++ ) {
+		for ( int index = startScan + 1; index < arraySize; index++ ) {
 			if ( array[index] < minValue ) {
 				minValue = array[index];
 				minIndex = index;
@@ -60,13 +50,9 @@ int selectionSort(int* array, int arraySize) {
 int insertionSort(int* array, int arraySize) {
 	int swaps = 0;
 
-	int index;
-	int scan;
-	int unsortedValue;
-
-	for ( index = 1; index < arraySize; index++ ) {
-		unsortedValue = array[index];
-		scan = index;
+	for ( int index = 1; index < arraySize; index++ ) {
+		int unsortedValue = array[index];
+		int scan = index;
 
 		while ( scan > 0 && array[scan - 1] > unsortedValue ) {
 			array[scan] = array[scan - 1];
@@ -81,7 +67,7 @@ int insertionSort(int* array, int arraySize) {
 }
 
 void sortmain1() {
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 
 	int array0[20];
 	int array1[20];
@@ -103,48 +89,45 @@ void sortmain1() {
 		array3[i] = tmp;
 	}
 
-	cout << "Tablica przed sortowaniem:" << endl;
+	std::cout << "Tablica przed sortowaniem:" << std::endl;
 	for ( int i = 0; i < 20; i++ ) {
-		cout << array0[i] << " ";
+		std::cout << array0[i] << " ";
 	}
-	cout << endl << endl;
+	std::cout << std::endl << std::endl;
 
-	cout << "Sortowanie babelkowe:" << endl;
-	cout << "Liczba zamian: " << bubbleSort(array1, 20) << endl;
+	std::cout << "Sortowanie babelkowe:" << std::endl;
+	std::cout << "Liczba zamian: " << bubbleSort(array1, 20) << std::endl;
 	for ( int i = 0; i < 20; i++ ) {
-		cout << array1[i] << " ";
+		std::cout << array1[i] << " ";
 	}
-	cout << endl << endl;
+	std::cout << std::endl << std::endl;
 
-	cout << "Sortowanie przez wybor:" << endl;
-	cout << "Liczba zamian: " << selectionSort(array2, 20) << endl;
+	std::cout << "Sortowanie przez wybor:" << std::endl;
+	std::cout << "Liczba zamian: " << selectionSort(array2, 20) << std::endl;
 	for ( int i = 0; i < 20; i++ ) {
-		cout << array2[i] << " ";
+		std::cout << array2[i] << " ";
 	}
-	cout << endl << endl;
+	std::cout << std::endl << std::endl;
 
-	cout << "Sortowanie przez wstawianie:" << endl;
-	cout << "Liczba zamian: " << insertionSort(array3, 20) << endl;
+	std::cout << "Sortowanie przez wstawianie:" << std::endl;
+	std::cout << "Liczba zamian: " << insertionSort(array3, 20) << std::endl;
 	for ( int i = 0; i < 20; i++ ) {
-		cout << array3[i] << " ";
+		std::cout << array3[i] << " ";
 	}
-	cout << endl << endl;
+	std::cout << std::endl << std::endl;
 
 	system("pause");
 }
 
-void swap(string& a, string& b) {
-	string temp = a;
+void swap(std::string& a, std::string& b) {
+	std::string temp = a;
 	a = b;
 	b = temp;
 }
 
-void bubbleSort(string* array, int arraySize) {
-	int maxElement;
-	int index;
-
-	for ( maxElement = arraySize; maxElement > 0; maxElement-- ) {
-		for ( index = 0; index < maxElement - 1; index++ ) {
+void bubbleSort(std::string* array, int arraySize) {
+	for ( int maxElement = arraySize; maxElement > 0; maxElement-- ) {
+		for ( int index = 0; index < maxElement - 1; index++ ) {
 			if ( array[index] > array[index + 1] ) {
 				swap(array[index], array[index + 1]);
 			}
@@ -152,17 +135,12 @@ void bubbleSort(string* array, int arraySize) {
 	}
 }
 
-void selectionSort(string* array, int arraySize) {
-	int startScan;
-	int minIndex;
-	string minValue;
-	int index;
+void selectionSort(std::string* array, int arraySize) {
+	for ( int startScan = 0; startScan < arraySize - 1; startScan++ ) {
+		int minIndex = startScan;
+		std::string minValue = array[startScan];
 
-	for ( startScan = 0; startScan < arraySize - 1; startScan++ ) {
-		minIndex = startScan;
-		minValue = array[startScan];
-
-		for ( index = startScan + 1; index < arraySize; index++ ) {
+		for ( int index = startScan + 1; index < arraySize; index++ ) {
 			if ( array[index] < minValue ) {
 				minValue = array[index];
 				minIndex = index;
@@ -173,14 +151,10 @@ void selectionSort(string* array, int arraySize) {
 	}
 }
 
-void insertionSort(string* array, int arraySize) {
-	int index;
-	int scan;
-	string unsortedValue;
-
-	for ( index = 1; index < arraySize; index++ ) {
-		unsortedValue = array[index];
-		scan = index;
+void insertionSort(std::string* array, int arraySize) {
+	for ( int index = 1; index < arraySize; index++ ) {
+		std::string unsortedValue = array[index];
+		int		scan = index;
 
 		while ( scan > 0 && array[scan - 1] > unsortedValue ) {
 			array[scan] = array[scan - 1];
@@ -192,25 +166,25 @@ void insertionSort(string* array, int arraySize) {
 }
 
 void sortmain2() {
-	string array[20];
-	string tmp;
+	std::string array[20];
+	std::string tmp;
 
-	cout << "Wprowadz 20 imion (oddziel spacjami, na koncu enter):" << endl;
+	std::cout << "Wprowadz 20 imion (oddziel spacjami, na koncu enter):" << std::endl;
 	for ( int i = 0; i < 20; i++ ) {
-		cin >> tmp;
+		std::cin >> tmp;
 		array[i] = tmp;
 	}
 
-	cout << "Tablica przed sortowaniem:" << endl;
+	std::cout << "Tablica przed sortowaniem:" << std::endl;
 	for ( int i = 0; i < 20; i++ ) {
-		cout << array[i] << " ";
+		std::cout << array[i] << " ";
 	}
-	cout << endl << endl;
+	std::cout << std::endl << std::endl;
 
 	char wyb;
 sortmain2wyb:
-	cout << "Wybierz sortowanie\n\tA)Sortowanie babelkowe\n\tB)Sortowanie przez wybieranie\n\tC)Sortowanie przez wstawianie\n" << "Wybor: ";
-	cin >> wyb;
+	std::cout << "Wybierz sortowanie\n\tA)Sortowanie babelkowe\n\tB)Sortowanie przez wybieranie\n\tC)Sortowanie przez wstawianie\n" << "Wybor: ";
+	std::cin >> wyb;
 	switch ( wyb ) {
 	case 'A':
 	case 'a':
@@ -225,15 +199,15 @@ sortmain2wyb:
 		insertionSort(array, 20);
 		break;
 	default:
-		cout << "Nie ma takiego sortowania!" << endl;
+		std::cout << "Nie ma takiego sortowania!" << std::endl;
 		goto sortmain2wyb;
 		break;
 	}
-	cout << "Posortowana tablica:" << endl;
+	std::cout << "Posortowana tablica:" << std::endl;
 	for ( int i = 0; i < 20; i++ ) {
-		cout << array[i] << " ";
+		std::cout << array[i] << " ";
 	}
-	cout << endl << endl;
+	std::cout << std::endl << std::endl;
 
 	system("pause");
 }
